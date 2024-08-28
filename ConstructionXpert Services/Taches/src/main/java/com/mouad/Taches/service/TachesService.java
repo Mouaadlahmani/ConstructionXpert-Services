@@ -1,5 +1,6 @@
 package com.mouad.Taches.service;
 
+import com.mouad.Taches.model.FullTachesResponse;
 import com.mouad.Taches.model.Taches;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface TachesService {
     void deleteTaches(Long id);
     Taches changerStatut(Long id, Taches taches);
     List<Taches> getAllTachesByProjet(Long id);
+    FullTachesResponse tachWithRessources(Long id);
 }
