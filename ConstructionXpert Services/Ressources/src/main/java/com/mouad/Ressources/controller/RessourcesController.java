@@ -24,6 +24,11 @@ public class RessourcesController {
         return ressourcesService.getAllRessources();
     }
 
+    @GetMapping("{id}")
+    List<Ressources>getRessourcesByTache(@PathVariable Long id){
+        return ressourcesService.getRessourcesByTache(id);
+    }
+
     @PutMapping("edit/{id}")
     public Ressources editRessource(@PathVariable Long id, @RequestBody Ressources ressources){
         return ressourcesService.editRessources(id, ressources);
