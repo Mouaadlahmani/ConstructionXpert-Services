@@ -21,3 +21,7 @@ spring:
       ddl-auto: update
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+application:
+  config:
+    ressources-url: http://localhost:8081/api/ressources/
