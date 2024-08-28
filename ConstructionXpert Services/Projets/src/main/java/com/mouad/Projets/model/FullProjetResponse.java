@@ -2,6 +2,7 @@ package com.mouad.Projets.model;
 
 import lombok.*;
 
+import java.sql.Date;
 import java.util.List;
 @Getter
 @Setter
@@ -11,8 +12,8 @@ import java.util.List;
 public class FullProjetResponse {
     private String nom;
     private String description;
-    private String dateDebut;
-    private String dateFin;
+    private Date dateDebut;
+    private Date dateFin;
     private Double budget;
     private List<Taches> taches;
 }
