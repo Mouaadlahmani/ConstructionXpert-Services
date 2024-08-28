@@ -8,17 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
+        <module name="Taches" />
         <module name="gatway" />
         <module name="discovery" />
         <module name="Projets" />
-        <module name="Taches (2)" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Projets" options="-parameters" />
-      <module name="Taches (2)" options="-parameters" />
+      <module name="Taches" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="gatway" options="-parameters" />
