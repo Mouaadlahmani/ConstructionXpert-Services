@@ -1,6 +1,7 @@
 package com.mouad.Taches.service;
 
 import com.mouad.Taches.model.Taches;
+import com.mouad.Taches.model.enums.Statut;
 import com.mouad.Taches.repository.TachesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class TachesServiceImpl implements TachesService{
 
     @Override
     public Taches ajouterTache(Taches taches) {
+        taches.setStatut(Statut.A_FAIRE);
         return tachesRepository.save(taches);
     }
 
