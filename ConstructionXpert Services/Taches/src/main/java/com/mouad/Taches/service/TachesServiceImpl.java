@@ -1,6 +1,9 @@
 package com.mouad.Taches.service;
 
+import com.mouad.Taches.model.FullTachesResponse;
+import com.mouad.Taches.model.Ressources;
 import com.mouad.Taches.model.Taches;
+import com.mouad.Taches.model.client.RessourcesClient;
 import com.mouad.Taches.model.enums.Statut;
 import com.mouad.Taches.repository.TachesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,8 @@ public class TachesServiceImpl implements TachesService{
 
     @Autowired
     TachesRepository tachesRepository;
+    @Autowired
+    RessourcesClient ressourcesClient;
 
     @Override
     public Taches ajouterTache(Taches taches) {
@@ -54,5 +59,22 @@ public class TachesServiceImpl implements TachesService{
     @Override
     public List<Taches> getAllTachesByProjet(Long id) {
         return tachesRepository.findAllByProjetId(id);
+    }
+
+    @Override
+    public FullTachesResponse tachWithRessources(Long id) {
+        Taches tache = tachesRepository.findById(id).orElse(
+                Taches.builder()
+                        .description("NOT_FOUND")
+                        .build()
+        );
+        List<Ressources> ressources = ressourcesClient.getRessourcesByTache(id);
+        return FullTachesResponse.builder()
+                .description(tache.getDescription())
+                .dateDebut(tache.getDateDebut())
+                .dateFin(tache.getDateFin())
+                .statut(tache.getStatut())
+                .ressources(ressources)
+                .build();
     }
 }
