@@ -9,4 +9,5 @@ public interface RessourcesService {
     Ressources editRessources (Long id, Ressources ressources);
     List<Ressources> getAllRessources ();
     void deleteRessources(Long id);
+    List<Ressources> getRessourcesByTache(Long id);
 }
