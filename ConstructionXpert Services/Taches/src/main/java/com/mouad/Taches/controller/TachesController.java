@@ -1,5 +1,6 @@
 package com.mouad.Taches.controller;
 
+import com.mouad.Taches.model.FullTachesResponse;
 import com.mouad.Taches.model.Taches;
 import com.mouad.Taches.service.TachesService;
 import lombok.RequiredArgsConstructor;
@@ -21,9 +22,14 @@ public class TachesController {
         return tachesService.ajouterTache(taches);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Taches> getAll(){
         return tachesService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public FullTachesResponse tachesWithRessources(@PathVariable Long id){
+        return tachesService.tachWithRessources(id);
     }
 
     @GetMapping("/projet/{id}")
