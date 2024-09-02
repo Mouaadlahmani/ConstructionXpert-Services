@@ -47,8 +47,13 @@ public class TachesController {
         return tachesService.changerStatut(id, taches);
     }
 
-    @DeleteMapping("/delte/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         tachesService.deleteTaches(id);
+    }
+
+    @DeleteMapping("/projet/delete/{id}")
+    public void deleteTachesOfProjet(@PathVariable Long id){
+        tachesService.deleteAllTacheOfProjet(id);
     }
 }

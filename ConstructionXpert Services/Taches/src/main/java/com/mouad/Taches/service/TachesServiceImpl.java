@@ -45,6 +45,7 @@ public class TachesServiceImpl implements TachesService{
 
     @Override
     public void deleteTaches(Long id) {
+        ressourcesClient.deleteRessourcesByTache(id);
         tachesRepository.deleteById(id);
     }
 
@@ -59,6 +60,12 @@ public class TachesServiceImpl implements TachesService{
     @Override
     public List<Taches> getAllTachesByProjet(Long id) {
         return tachesRepository.findAllByProjetId(id);
+    }
+
+    @Override
+    public void deleteAllTacheOfProjet(Long id) {
+       List<Taches> taches = tachesRepository.findAllByProjetId(id);
+         tachesRepository.deleteAll(taches);
     }
 
     @Override

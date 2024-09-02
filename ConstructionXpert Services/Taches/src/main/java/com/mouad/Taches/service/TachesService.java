@@ -12,5 +12,7 @@ public interface TachesService {
     void deleteTaches(Long id);
     Taches changerStatut(Long id, Taches taches);
     List<Taches> getAllTachesByProjet(Long id);
+    void deleteAllTacheOfProjet(Long id);
     FullTachesResponse tachWithRessources(Long id);
+
 }

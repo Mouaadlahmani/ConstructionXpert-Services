@@ -44,4 +44,10 @@ public class RessourcesServiceImpl implements RessourcesService{
     public List<Ressources> getRessourcesByTache(Long id) {
         return ressourcesRepository.getRessourcesByTacheId(id);
     }
+
+    @Override
+    public void deleteRessourcesWithTache(Long id) {
+        List<Ressources> ressources = ressourcesRepository.getRessourcesByTacheId(id);
+        ressourcesRepository.deleteAll(ressources);
+    }
 }

@@ -2,6 +2,7 @@ package com.mouad.Projets.client;
 
 import com.mouad.Projets.model.Taches;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -12,4 +13,6 @@ public interface TachesClient {
 
     @GetMapping("/projet/{id}")
     List<Taches> findAllTachesByProjet(@PathVariable Long id);
+    @DeleteMapping("/projet/delete/{id}")
+    List<Taches> deleteTacheWithProjet(@PathVariable Long id);
 }

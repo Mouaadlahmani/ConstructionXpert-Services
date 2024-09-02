@@ -38,4 +38,9 @@ public class RessourcesController {
     public void delete(@PathVariable Long id){
         ressourcesService.deleteRessources(id);
     }
+
+    @DeleteMapping("tache/{id}")
+    public void deleteRessourcesOfTache(@PathVariable Long id){
+        ressourcesService.deleteRessourcesWithTache(id);
+    }
 }

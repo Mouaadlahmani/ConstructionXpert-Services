@@ -41,6 +41,7 @@ public class ProjetsServiceImpl implements ProjetsService{
 
     @Override
     public void supprimerProjet(Long id) {
+        tachesClient.deleteTacheWithProjet(id);
         projetsRepository.deleteById(id);
     }
 
