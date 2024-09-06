@@ -9,9 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
         <module name="Ressources" />
-        <module name="Taches" />
+        <module name="security" />
         <module name="gatway" />
         <module name="discovery" />
+        <module name="Taches" />
         <module name="Projets" />
       </profile>
     </annotationProcessing>
@@ -24,6 +25,7 @@
       <module name="config-server" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="gatway" options="-parameters" />
+      <module name="security" options="-parameters" />
     </option>
   </component>
 </project>
