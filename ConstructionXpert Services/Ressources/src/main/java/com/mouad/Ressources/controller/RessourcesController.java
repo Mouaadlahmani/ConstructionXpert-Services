@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/ressources/")
@@ -14,9 +15,9 @@ public class RessourcesController {
     @Autowired
     RessourcesService ressourcesService;
 
-    @PostMapping("add")
-    public Ressources addRessource(@RequestBody Ressources ressources){
-        return ressourcesService.ajouterRessource(ressources);
+    @PostMapping("add/{id}")
+    public Ressources addRessource(@PathVariable Long id, @RequestBody Ressources ressources){
+        return ressourcesService.ajouterRessource(id, ressources);
     }
 
     @GetMapping("all")
@@ -27,6 +28,11 @@ public class RessourcesController {
     @GetMapping("{id}")
     List<Ressources>getRessourcesByTache(@PathVariable Long id){
         return ressourcesService.getRessourcesByTache(id);
+    }
+
+    @GetMapping("ressource/{id}")
+    Optional<Ressources> getRessourcesById(@PathVariable Long id){
+        return ressourcesService.ressourceById(id);
     }
 
     @PutMapping("edit/{id}")

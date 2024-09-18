@@ -1,32 +1,46 @@
-eureka:
-  client:
-    register-with-eureka: false
-server:
-  port: 8222
-spring:
-  main:
-    allow-circular-references: true
-  application:
-    name: gateway
-  cloud:
-    gateway:
-      routes:
-        - id: projets
-          uri: http://localhost:8090
-          predicates:
-            - Path=/api/projets/**
-          filters: AuthenticationFilter
-        - id: taches
-          uri: http://localhost:8070
-          predicates:
-            - Path=/api/taches/**
-          filters: AuthenticationFilter
-        - id: ressources
-          uri: http://localhost:8081
-          predicates:
-            - Path=/api/ressources/**
-          filters: AuthenticationFilter
-        - id: security
-          uri: http://localhost:8084
-          predicates:
-            - Path=/api/auth/**
+#eureka:
+#  client:
+#    register-with-eureka: false
+#server:
+#  port: 8222
+#spring:
+#  main:
+#    allow-circular-references: true
+#  application:
+#    name: gateway
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: projets
+#          uri: http://localhost:8090
+#          predicates:
+#            - Path=/api/projets/**
+#          filters: AuthenticationFilter
+#        - id: taches
+#          uri: http://localhost:8070
+#          predicates:
+#            - Path=/api/taches/**
+#          filters: AuthenticationFilter
+#        - id: ressources
+#          uri: http://localhost:8081
+#          predicates:
+#            - Path=/api/ressources/**
+#          filters: AuthenticationFilter
+#        - id: security
+#          uri: http://localhost:8084
+#          predicates:
+#            - Path=/api/auth/**
+#      globalcors:
+#        corsConfigurations:
+#          '[/**]':
+#            allowedOrigins:
+#              - "http://localhost:4200"
+#            allowedMethods:
+#              - GET
+#              - POST
+#              - PUT
+#              - DELETE
+#              - OPTIONS
+#            allowedHeaders:
+#              - "*"
+#            allowCredentials: true

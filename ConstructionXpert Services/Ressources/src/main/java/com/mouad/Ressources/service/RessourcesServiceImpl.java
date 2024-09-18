@@ -1,5 +1,6 @@
 package com.mouad.Ressources.service;
 
+
 import com.mouad.Ressources.model.Ressources;
 import com.mouad.Ressources.repository.RessourcesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ public class RessourcesServiceImpl implements RessourcesService{
     @Autowired
     RessourcesRepository ressourcesRepository;
 
+
     @Override
-    public Ressources ajouterRessource(Ressources ressources) {
+    public Ressources ajouterRessource(Long id, Ressources ressources) {
+        ressources.setTacheId(id);
         return ressourcesRepository.save(ressources);
     }
 
@@ -28,6 +31,11 @@ public class RessourcesServiceImpl implements RessourcesService{
         saved.setQuantity(ressources.getQuantity());
         saved.setTacheId(ressources.getTacheId());
         return ressourcesRepository.save(saved);
+    }
+
+    @Override
+    public Optional<Ressources> ressourceById(Long id) {
+        return ressourcesRepository.findById(id);
     }
 
     @Override

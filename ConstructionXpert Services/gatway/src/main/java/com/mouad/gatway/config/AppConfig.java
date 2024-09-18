@@ -9,7 +9,6 @@ public class AppConfig {
 
     @Bean
     public HttpMessageConverters customConverters() {
-        // You can add custom converters here if needed
         return new HttpMessageConverters();
     }
 }

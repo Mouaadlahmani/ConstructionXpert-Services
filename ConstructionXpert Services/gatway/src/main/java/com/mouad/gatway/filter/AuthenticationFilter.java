@@ -22,8 +22,6 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     @Autowired
     private AuthInterface authInterface;
 
-//    @Autowired
-//    private RestTemplate restTemplate;
 
     public AuthenticationFilter() {
         super(Config.class);

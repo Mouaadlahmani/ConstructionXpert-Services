@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/taches")
@@ -17,14 +18,19 @@ public class TachesController {
     @Autowired
     TachesService tachesService;
 
-    @PostMapping("/add")
-    public Taches addTache(@RequestBody Taches taches){
-        return tachesService.ajouterTache(taches);
+    @PostMapping("/add/{id}")
+    public Taches addTache(@PathVariable Long id, @RequestBody Taches taches){
+        return tachesService.ajouterTache(id, taches);
     }
 
     @GetMapping("/all")
     public List<Taches> getAll(){
         return tachesService.getAll();
+    }
+
+    @GetMapping("/tache/{id}")
+    public Optional<Taches> getTacheById(@PathVariable Long id){
+        return tachesService.getTachesById(id);
     }
 
     @GetMapping("/{id}")

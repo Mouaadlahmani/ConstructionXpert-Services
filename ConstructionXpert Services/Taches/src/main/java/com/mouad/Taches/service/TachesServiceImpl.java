@@ -21,8 +21,9 @@ public class TachesServiceImpl implements TachesService{
     RessourcesClient ressourcesClient;
 
     @Override
-    public Taches ajouterTache(Taches taches) {
+    public Taches ajouterTache(Long id, Taches taches) {
         taches.setStatut(Statut.A_FAIRE);
+        taches.setProjetId(id);
         return tachesRepository.save(taches);
     }
 
@@ -47,6 +48,11 @@ public class TachesServiceImpl implements TachesService{
     public void deleteTaches(Long id) {
         ressourcesClient.deleteRessourcesByTache(id);
         tachesRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Taches> getTachesById(Long id) {
+        return tachesRepository.findById(id);
     }
 
     @Override
