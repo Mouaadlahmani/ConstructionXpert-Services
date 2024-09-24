@@ -7,6 +7,9 @@ import com.mouad.Taches.model.client.RessourcesClient;
 import com.mouad.Taches.model.enums.Statut;
 import com.mouad.Taches.repository.TachesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -89,5 +92,22 @@ public class TachesServiceImpl implements TachesService{
                 .statut(tache.getStatut())
                 .ressources(ressources)
                 .build();
+    }
+
+    @Override
+    public List<Taches> findTachesWithSorting(String field) {
+        return tachesRepository.findAll(Sort.by(Sort.Direction.ASC, field));
+    }
+
+    @Override
+    public Page<Taches> findTachesWithPagination(int offset, int pageSize) {
+        Page<Taches> taches = tachesRepository.findAll(PageRequest.of(offset, pageSize));
+        return taches;
+    }
+
+    @Override
+    public Page<Taches> findTachesWithPaginationAndSorting(int offset, int pageSize, String field) {
+        Page<Taches> taches = tachesRepository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
+        return taches;
     }
 }
