@@ -1,10 +1,12 @@
 package com.mouad.Taches.controller;
 
+import com.mouad.Taches.dto.APIResponse;
 import com.mouad.Taches.model.FullTachesResponse;
 import com.mouad.Taches.model.Taches;
 import com.mouad.Taches.service.TachesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,6 +40,24 @@ public class TachesController {
         return tachesService.tachWithRessources(id);
     }
 
+    @GetMapping("/sort/{field}")
+    public APIResponse<List<Taches>> getTachesWithSort(@PathVariable String field) {
+        List<Taches> allTaches = tachesService.findTachesWithSorting(field);
+        return new APIResponse<>(allTaches.size(), allTaches);
+    }
+
+    @GetMapping("/pagination/{offset}/{pageSize}")
+    public APIResponse<Page<Taches>> getTachesWithPagination(@PathVariable int offset, @PathVariable int pageSize) {
+        Page<Taches> tachesWithPagination = tachesService.findTachesWithPagination(offset, pageSize);
+        return new APIResponse<>(tachesWithPagination.getSize(), tachesWithPagination);
+    }
+
+    @GetMapping("/pagination/{offset}/{pageSize}/{field}")
+    public APIResponse<Page<Taches>> getTachesWithPaginationAndSort(@PathVariable int offset, @PathVariable int pageSize, @PathVariable String field) {
+        Page<Taches> tachesWithPagination = tachesService.findTachesWithPaginationAndSorting(offset, pageSize, field);
+        return new APIResponse<>(tachesWithPagination.getSize(), tachesWithPagination);
+    }
+
     @GetMapping("/projet/{id}")
     public List<Taches> tachesOfProjet(@PathVariable Long id){
         return tachesService.getAllTachesByProjet(id);
@@ -62,4 +82,6 @@ public class TachesController {
     public void deleteTachesOfProjet(@PathVariable Long id){
         tachesService.deleteAllTacheOfProjet(id);
     }
+
+
 }
