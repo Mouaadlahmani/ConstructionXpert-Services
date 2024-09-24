@@ -13,7 +13,7 @@ spring:
     name: projets
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/projets
+    url: jdbc:postgresql://localhost:5432/projet
     username: postgres
     password: admin
   jpa:
