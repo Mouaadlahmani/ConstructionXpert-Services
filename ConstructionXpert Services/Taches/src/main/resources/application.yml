@@ -13,7 +13,7 @@ spring:
     name: taches
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/tache
+    url: jdbc:postgresql://localhost:5432/taches
     username: postgres
     password: admin
   jpa:
